@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="노른자국어 홈페이지 1차 PC 랜딩페이지 시안">
+<title>노른자국어 | 읽고 이해하는 힘, 지금부터 차근차근</title>
+<style>
+:root {
+  --navy:#243450; --navy-dark:#172640; --ink:#202B3C; --slate:#62738A;
+  --line:#DCE3EB; --pale:#F4F6F9; --pale-blue:#EEF2F7;
+  --white:#FFFFFF; --yellow:#E5B74E;
+  --shadow:0 16px 48px rgba(31,52,80,.075);
+}
+* {box-sizing:border-box}
+html {scroll-behavior:smooth;scroll-padding-top:90px}
+body {margin:0;font-family:Pretendard,"Apple SD Gothic Neo","Malgun Gothic",Arial,sans-serif;color:var(--ink);background:#fff;word-break:keep-all;-webkit-font-smoothing:antialiased}
+button,input,a {font:inherit}
+a {color:inherit;text-decoration:none}
+button {cursor:pointer}
+h1,h2,h3,h4,p {margin:0}
+button:focus-visible,a:focus-visible {outline:3px solid #779dc7;outline-offset:3px}
+.container {width:min(1240px,calc(100% - 80px));margin:0 auto}
+.section {padding:120px 0}
+.section-heading {margin-bottom:52px}
+.eyebrow {font-size:12px;letter-spacing:.13em;font-weight:800;color:#536F97;text-transform:uppercase}
+.section-heading h2 {margin-top:15px;font-size:clamp(31px,3vw,45px);letter-spacing:-.05em;line-height:1.35;font-weight:830}
+.section-heading p {font-size:16px;color:var(--slate);line-height:1.8;margin-top:17px}
+.btn {display:inline-flex;justify-content:center;align-items:center;gap:12px;border:1px solid transparent;border-radius:10px;padding:14px 22px;font-size:14px;font-weight:750;min-height:51px;white-space:nowrap;transition:background .2s,border-color .2s,transform .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{color:white;background:var(--navy);border-color:var(--navy)}
+.btn-primary:hover{background:#34496a}
+.btn-outline{background:white;color:var(--navy);border-color:#C8D2DE}
+.btn-outline:hover{background:#f6f9fd}
+.btn-white{background:#fff;color:var(--navy);border-color:white}
+.btn-ghost-white{background:transparent;color:white;border-color:rgba(255,255,255,.43)}
+.arr {font-size:19px;font-weight:400;line-height:0}
+
+/* HEADER */
+.site-header{height:78px;position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);border-bottom:1px solid #E5EAF0;backdrop-filter:blur(14px)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:100%;gap:28px}
+.brand{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:850;letter-spacing:-.06em;color:var(--navy-dark)}
+.brand-icon{width:34px;height:34px;border:2px solid var(--navy);border-radius:11px;display:grid;place-items:center;font-size:12px;letter-spacing:-.08em}
+.nav-links {display:flex;align-items:center;gap:30px}
+.nav-links a{font-size:14px;font-weight:650;color:#50617B;white-space:nowrap}
+.nav-links a:hover{color:var(--navy-dark)}
+.header-btn{padding:11px 18px;min-height:42px}
+.menu-toggle{display:none;background:none;border:0;color:var(--navy);font-size:25px}
+
+/* HERO */
+.hero{position:relative;padding:92px 0 102px;overflow:hidden}
+.hero::before{position:absolute;top:-240px;right:-280px;border-radius:50%;width:720px;height:720px;background:radial-gradient(circle,#f4f6f9 0%,#fff 70%);content:"";z-index:0}
+.hero-grid{display:grid;grid-template-columns:1fr 1.02fr;gap:64px;align-items:center;min-height:520px;position:relative;z-index:1}
+.hero-tag{display:inline-block;color:#4d6484;font-size:13px;font-weight:750;border:1px solid #D7E1EA;background:#F6F8FB;border-radius:50px;padding:10px 16px}
+.hero h1{margin-top:24px;font-size:clamp(44px,4.2vw,63px);line-height:1.27;letter-spacing:-.065em;font-weight:850;color:var(--navy-dark)}
+.hero h1 em{font-style:normal;color:#647C9E}
+.hero p{margin:26px 0 30px;color:#65758C;line-height:1.85;font-size:17px}
+.hero-actions{display:flex;gap:11px;flex-wrap:wrap}
+.hero-note{margin-top:23px;color:#8B99AB;font-size:12px}
+.asset-box {border:2px dashed #C4CFDA;background:linear-gradient(140deg,#EDF2F6,#F8FAFC);border-radius:26px;position:relative;color:#8D9BAC}
+.asset-label{display:inline-block;border-radius:6px;background:#fff;border:1px solid #DDE5ED;padding:8px 12px;font-size:12px;font-weight:650;color:#708098}
+.hero-art{height:510px;padding:25px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+.hero-art .art-icon{width:76px;height:76px;border:2px dashed #B0BDCD;border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:31px}
+.hero-art p{font-size:15px;text-align:center;margin:0;color:#708099}
+.art-top{position:absolute;top:20px;left:24px;font-size:11px;letter-spacing:.08em;color:#94A0B0}
+.hero-badge{position:absolute;right:20px;bottom:20px;color:#9DA8B7;font-size:12px}
+
+/* NEWS */
+.news-section{background:var(--pale);border-top:1px solid #E8ECF2;border-bottom:1px solid #E8ECF2}
+.news-intro{display:flex;justify-content:space-between;gap:80px;align-items:flex-end}
+.news-intro .section-heading{max-width:760px;margin-bottom:0}
+.news-intro .minor{font-size:14px;color:#8B97A8;max-width:230px;line-height:1.7}
+.news-stats{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:46px 0 20px}
+.stat{background:white;border:1px solid #DFE5EC;padding:30px 33px;border-radius:16px;min-height:189px}
+.stat .over{font-size:13px;font-weight:700;color:#6C7E95}
+.stat .metric{font-size:48px;font-weight:850;color:var(--navy-dark);letter-spacing:-.055em;margin:14px 0 8px}
+.stat .metric span{font-size:21px}
+.stat .sub{font-size:13px;color:#738199;line-height:1.55}
+.stat-source{font-size:11px;color:#9AA6B4;line-height:1.5;margin-top:13px}
+.news-notice{font-size:12px;color:#75849A;line-height:1.7;margin-bottom:32px}
+.news-header{display:flex;justify-content:space-between;align-items:center;margin:45px 0 20px}
+.news-header h3{font-size:23px;letter-spacing:-.04em}
+.news-header small{color:#8391A6}
+.article-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.article{display:flex;flex-direction:column;background:white;border:1px solid #DFE5EC;border-radius:14px;overflow:hidden;min-height:276px;transition:box-shadow .2s,transform .2s}
+.article:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.article-media{height:76px;background:linear-gradient(110deg,#DCE5EE,#EDF1F6);padding:18px 19px;display:flex;align-items:center;justify-content:space-between}
+.article-media .name{font-size:13px;font-weight:900;letter-spacing:.07em;color:#5E7593}
+.article-media .date{font-size:11px;color:#8998AB}
+.article-body{padding:19px 19px 20px;flex:1;display:flex;flex-direction:column;gap:12px}
+.article h4{font-size:17px;letter-spacing:-.035em;line-height:1.55}
+.article p{font-size:13px;line-height:1.7;color:#7A899D;flex:1}
+.article-link{display:inline-flex;align-items:center;gap:6px;color:#416183;font-size:12px;font-weight:800;margin-top:2px}
+.article.extra{min-height:160px}
+.article.extra .article-media{height:56px}
+.article.extra .article-body{padding:15px 19px}
+.article.unverified{border-style:dashed}
+.news-bridge{display:flex;justify-content:space-between;gap:30px;align-items:center;margin-top:46px;border-radius:15px;background:var(--navy);color:white;padding:30px 36px}
+.news-bridge strong{display:block;font-size:25px;line-height:1.5;letter-spacing:-.045em}
+.news-bridge p{font-size:14px;color:#C4CFDD;line-height:1.75;margin-top:8px}
+
+/* SOLUTION */
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feature{padding:34px 28px;background:#fff;border:1px solid #DEE4EA;border-radius:16px;min-height:266px}
+.feature-num{display:block;color:#97A8BC;font-size:13px;font-weight:850;margin-bottom:32px;letter-spacing:.12em}
+.feature h3{font-size:25px;letter-spacing:-.05em;margin-bottom:13px}
+.feature p{font-size:14px;color:#78889B;line-height:1.8}
+.feature-tag{display:inline-block;margin-top:25px;background:#F1F5F9;color:#536C8E;padding:7px 10px;font-size:11px;font-weight:700;border-radius:7px}
+
+/* CURRICULUM */
+.curriculum{background:var(--pale)}
+.flow-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.flow-step{border-radius:14px;border:1px solid #DFE6EF;background:#fff;padding:26px;position:relative;min-height:191px}
+.flow-step .step-index{color:#708AA8;font-size:12px;font-weight:750}
+.flow-step h3{margin-top:21px;font-size:20px;letter-spacing:-.045em}
+.flow-step p{color:#8290A0;font-size:13px;line-height:1.7;margin-top:10px}
+.flow-step:not(:last-child):after{content:"›";font-size:26px;font-weight:500;color:#9BAEC1;position:absolute;right:-12px;top:48%;z-index:2}
+.grade-board{margin-top:32px;background:white;padding:30px 32px;border-radius:16px;border:1px solid #DBE3ED}
+.board-top{display:flex;justify-content:space-between;gap:30px;align-items:center}
+.board-top h3{font-size:22px}
+.board-top small{color:#8999AE;font-size:12px}
+.grade-tabs{display:flex;gap:8px;margin-top:23px;flex-wrap:wrap}
+.grade-tab{background:#F4F6F9;border:1px solid #E0E5ED;color:#697D95;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:800}
+.grade-tab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.grade-content{display:flex;justify-content:space-between;gap:24px;background:#F8FAFC;border-radius:12px;margin-top:16px;padding:24px 28px;align-items:center}
+.grade-content h4{font-size:17px;margin-bottom:8px}
+.grade-content p{color:#7B899B;font-size:13px;line-height:1.7}
+.pill{background:white;border:1px solid #E0E5EE;color:#8D9AAB;font-size:12px;padding:9px 12px;border-radius:30px;white-space:nowrap}
+
+/* APP PREVIEW */
+.preview-layout{display:grid;grid-template-columns:.82fr 1.18fr;align-items:center;gap:80px}
+.preview-info .section-heading{margin-bottom:28px}
+.preview-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:25px}
+.preview-tab{padding:12px 17px;background:#f5f7fa;border:1px solid #DCE3EC;border-radius:9px;font-size:13px;font-weight:750;color:#68809A}
+.preview-tab.active{background:var(--navy);color:white;border-color:var(--navy)}
+.preview-info .tab-desc{font-size:16px;line-height:1.9;color:#6F7E92;min-height:95px}
+.preview-info .hint{color:#97A2AF;font-size:12px;margin-top:22px}
+.preview-stage{min-height:558px;border-radius:24px;background:linear-gradient(130deg,#F1F4F8,#E5EBF3);border:1px solid #E1E8F1;display:flex;align-items:center;justify-content:center;padding:42px}
+.device{width:290px;min-height:495px;border:8px solid #23334C;border-radius:32px;background:white;box-shadow:0 18px 42px rgba(33,49,73,.18);position:relative;overflow:hidden}
+.device:before{content:"";width:60px;height:9px;background:#23334C;border-radius:0 0 9px 9px;position:absolute;top:0;left:calc(50% - 30px)}
+.device-app{padding:32px 18px 18px;font-size:13px}
+.fake-app-bar{display:flex;justify-content:space-between;align-items:center;font-weight:800;font-size:13px;margin-bottom:16px}
+.fake-app-bar span{font-size:11px;color:#8C9BAC;font-weight:500}
+.fake-progress{height:5px;background:#E9EDF3;border-radius:100px;margin-bottom:18px}
+.fake-progress i{display:block;width:45%;height:5px;border-radius:100px;background:#566D90}
+.fake-tag{font-size:10px;color:#5F7A9C;font-weight:800;letter-spacing:.03em}
+.fake-title{margin:8px 0 14px;font-size:17px;letter-spacing:-.04em;font-weight:800;color:#2D3B50}
+.fake-passage{border:1px solid #E3E8EE;background:#F9FAFC;border-radius:10px;padding:14px;line-height:1.9;font-size:11.5px;color:#576579;min-height:192px}
+.fake-action{margin-top:18px;border-radius:8px;background:#2B3E5D;color:white;text-align:center;padding:13px 0;font-size:12px;font-weight:800}
+.fake-question{font-size:12px;line-height:1.8;color:#566476;margin-bottom:16px;font-weight:700}
+.fake-option{font-size:11px;line-height:1.6;padding:10px;border:1px solid #E2E7ED;margin-top:8px;border-radius:7px;color:#576679}
+.fake-option.selected{border:1.5px solid #456185;background:#EEF3F9;color:#243B5B}
+.fake-correct{color:#3B7858;background:#EDF6F1;border-radius:7px;padding:9px 11px;font-size:11px;font-weight:750}
+.fake-explain{margin-top:12px;border:1px solid #E2E7EF;background:#F9FAFB;border-radius:10px;padding:13px;color:#5E6E80;font-size:12px;line-height:1.85}
+.fake-sample-label{position:absolute;right:9px;bottom:5px;color:#ACB6C4;font-size:9px}
+.device-view{display:none}
+.device-view.active{display:block}
+
+/* REWARD */
+.reward{background:#fff;border-top:1px solid #F0F2F5}
+.reward-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:80px;align-items:center}
+.reward-art{height:400px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:15px;background:#F6F8FB}
+.reward-art .egg-icon{width:78px;height:92px;border:3px dashed #B4C0CE;border-radius:52% 52% 47% 47%;display:grid;place-items:center;color:#A2B0C0;font-size:13px}
+.reward-copy .section-heading{margin-bottom:24px}
+.reward-points{display:flex;gap:14px;flex-wrap:wrap}
+.reward-point{background:#F4F7FB;border:1px solid #E3E9F1;padding:13px 15px;border-radius:10px;font-size:13px;font-weight:700;color:#516984}
+.reward-caution{font-size:12px;color:#96A1AF;line-height:1.7;margin-top:23px}
+
+/* PRICE */
+.pricing{background:var(--pale)}
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.price-card{background:#fff;padding:38px 40px;border-radius:18px;border:1px solid #DDE5EE;display:flex;flex-direction:column;gap:20px}
+.price-card.featured{border:2px solid #50688D}
+.price-head{display:flex;justify-content:space-between;align-items:center;gap:14px}
+.price-head h3{font-size:23px;letter-spacing:-.035em}
+.price-head span{font-size:11px;font-weight:800;color:#57749A;background:#EEF3F8;border-radius:30px;padding:8px 11px}
+.price{font-size:39px;letter-spacing:-.05em;color:#223451;font-weight:850}
+.price small{font-size:13px;color:#8290A2;font-weight:600;letter-spacing:0}
+.price-explain{color:#728197;font-size:14px;line-height:1.6}
+.price-features{list-style:none;padding:22px 0 0;margin:0;border-top:1px solid #E4EAF0;flex:1}
+.price-features li{padding:9px 0 9px 23px;color:#65768E;font-size:14px;position:relative}
+.price-features li:before{content:"✓";position:absolute;left:0;color:#527199;font-weight:850}
+.price-caution{font-size:12px;color:#91A0B0;line-height:1.7;margin-top:21px}
+
+/* INSTALL */
+.install{background:var(--navy-dark);color:white;padding:108px 0}
+.install-grid{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center}
+.install h2{font-size:clamp(32px,3.1vw,48px);line-height:1.33;letter-spacing:-.05em;margin-top:17px}
+.install p{color:#BBC7D7;margin-top:19px;line-height:1.85;font-size:15px}
+.install-actions{display:flex;gap:10px;margin-top:29px;flex-wrap:wrap}
+.qr-display{justify-self:end;background:#FFF;border-radius:17px;padding:27px;width:300px;color:#273B59;text-align:center;box-shadow:0 18px 40px rgba(0,0,0,.12)}
+.qr-placeholder{width:190px;height:190px;border:2px dashed #B9C5D2;background:repeating-linear-gradient(45deg,#F2F5F9,#F2F5F9 5px,#FFF 5px,#FFF 10px);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;border-radius:8px;color:#879AB0;font-weight:800;font-size:12px}
+.qr-display strong{display:block;font-size:15px}
+.qr-display p{color:#8A9BAE;font-size:11px;margin:8px 0 0}
+.note-chip{display:inline-block;background:rgba(255,255,255,.1);border-radius:7px;color:#C8D3E0;padding:8px 11px;font-size:11px;font-weight:600;margin-top:17px}
+
+/* FOOTER */
+.footer{background:#fff;padding:42px 0 60px}
+.footer-in{display:flex;justify-content:space-between;align-items:flex-start;gap:40px}
+.footer strong{color:#273C58}
+.footer p{font-size:12px;color:#95A0AD;line-height:1.9;margin-top:13px}
+.footer-links{display:flex;gap:24px;color:#7B8898;font-size:12px}
+
+/* FLOAT */
+.top-btn{position:fixed;right:24px;bottom:24px;z-index:30;width:44px;height:44px;border:1px solid #DAE1EA;background:#fff;color:#3B516D;border-radius:50%;box-shadow:0 8px 25px rgba(20,33,53,.11);display:none;font-size:20px}
+.top-btn.show{display:block}
+.toast{position:fixed;z-index:200;left:50%;transform:translateX(-50%);bottom:25px;background:var(--navy-dark);color:#fff;border-radius:10px;padding:14px 21px;font-size:13px;box-shadow:0 8px 20px #14253f30;display:none;max-width:calc(100vw - 30px)}
+.toast.show{display:block}
+[data-design-note]{position:relative}
+@media(max-width:1050px){
+ .nav-links{gap:15px}
+ .hero-grid{gap:30px}
+ .section{padding:90px 0}
+ .preview-layout,.reward-layout{gap:35px}
+ .install-grid{gap:30px}
+}
+@media(max-width:760px){
+ html{scroll-padding-top:65px}
+ .container{width:calc(100% - 36px)}
+ .site-header{height:65px}
+ .brand{font-size:17px}
+ .brand-icon{width:29px;height:29px;border-radius:9px}
+ .menu-toggle{display:block}
+ .header-btn{display:none}
+ .nav-links{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:#fff;border-bottom:1px solid #DCE3EA;box-shadow:0 12px 20px #10243c0d;padding:12px 22px}
+ .nav-links.open{display:flex}
+ .nav-links a{padding:13px 4px}
+ .section{padding:72px 0}
+ .hero{padding:61px 0 70px}
+ .hero-grid{grid-template-columns:1fr;gap:34px}
+ .hero h1{font-size:43px}
+ .hero p{font-size:15px}
+ .hero-art{height:285px}
+ .section-heading{margin-bottom:29px}
+ .section-heading h2{font-size:31px}
+ .section-heading p{font-size:14px}
+ .news-intro{display:block}
+ .news-stats,.feature-grid,.price-grid,.preview-layout,.reward-layout,.install-grid{grid-template-columns:1fr}
+ .stat{min-height:154px}
+ .stat .metric{font-size:39px}
+ .article-grid{grid-template-columns:1fr}
+ .article{min-height:205px}
+ .news-bridge{display:block;padding:28px}
+ .news-bridge strong{font-size:21px}
+ .news-bridge .btn{margin-top:20px}
+ .flow-steps{grid-template-columns:1fr 1fr}
+ .flow-step:not(:last-child):after{display:none}
+ .grade-board{padding:23px 18px}
+ .board-top{display:block}
+ .board-top small{display:block;margin-top:9px}
+ .grade-content{display:block;padding:20px}
+ .grade-content .pill{display:inline-block;margin-top:17px}
+ .preview-layout{gap:30px}
+ .preview-stage{min-height:525px;padding:22px}
+ .device{width:282px}
+ .reward-layout{gap:32px}
+ .reward-art{height:245px;grid-row:2}
+ .price-card{padding:30px 25px}
+ .install{padding:78px 0}
+ .qr-display{justify-self:center;width:min(300px,100%)}
+ .footer-in{display:block}
+ .footer-links{margin-top:22px;gap:14px;flex-wrap:wrap}
+ .top-btn{right:14px;bottom:15px}
+}
+@media(max-width:410px){
+ .hero h1{font-size:37px}
+ .flow-steps{grid-template-columns:1fr}
+ .btn{font-size:13px;padding:13px 16px}
+ .hero-actions .btn{flex:1}
+}
+/* Introduction copy from the supplied landing-page brief */
+.intro-panel{padding:36px;margin-bottom:32px;border:1px solid var(--line);border-radius:16px;background:var(--pale)}
+.intro-panel h3{font-size:28px;line-height:1.4;letter-spacing:-.045em;color:var(--navy-dark)}
+.intro-panel p,.intro-list,.intro-panel ul{font-size:16px;line-height:1.9;color:var(--slate)}
+.intro-panel p{margin-top:22px}
+.intro-panel ul,.intro-list{padding-left:23px;margin:22px 0}
+.intro-method{margin-top:32px;margin-bottom:0;background:var(--white)}
+.intro-method .intro-emphasis{font-size:24px;font-weight:800;line-height:1.6;color:var(--navy)}
+@media(max-width:760px){.intro-panel{padding:25px}.intro-panel h3{font-size:24px}.intro-panel p,.intro-list,.intro-panel ul{font-size:14px}.intro-method .intro-emphasis{font-size:21px}}
+/* Supplied introduction: three columns, verbatim copy */
+.exact-intro{display:grid;grid-template-columns:1.16fr 1fr .72fr;gap:38px;align-items:start}
+.exact-column h2,.exact-column h3{font-size:24px;line-height:1.5;letter-spacing:-.045em;color:var(--navy-dark);font-weight:800;margin:0 0 23px}
+.exact-column p,.exact-column li{font-size:16px;line-height:1.6;letter-spacing:-.035em;color:var(--ink);font-weight:600}
+.exact-column p{margin:0 0 25px}
+.exact-column p+h3{margin-top:36px}
+.exact-column ul{padding-left:20px;margin:0 0 25px}
+.exact-closing{padding-top:59px}
+@media(min-width:1051px){.exact-intro{width:min(1360px,calc(100% - 80px))}}
+@media(max-width:1050px){.exact-intro{grid-template-columns:1fr 1fr;gap:35px}.exact-closing{grid-column:2;padding-top:0}}
+@media(max-width:760px){.exact-intro{grid-template-columns:1fr;gap:30px}.exact-closing{grid-column:auto}.exact-column h2,.exact-column h3{font-size:23px}.exact-column p,.exact-column li{font-size:15px}}
+.brand-lead{display:grid;grid-template-columns:1fr 1fr;gap:70px}.brand-lead h2{font-size:clamp(34px,3.5vw,49px);line-height:1.4;letter-spacing:-.05em;margin-top:18px;color:var(--navy-dark)}.brand-lead p{font-size:17px;line-height:1.9;color:var(--slate);margin-bottom:20px}.brand-lead strong{font-size:24px;line-height:1.6;color:var(--navy)}
+.core-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;background:var(--navy);color:white;padding:38px;border-radius:18px;margin-top:48px}.core-strip small{color:#bbcadf;letter-spacing:.1em}.core-strip h3{font-size:26px;margin:18px 0 12px}.core-strip p{color:#c9d3e1;font-size:14px;line-height:1.8}.world-heading{margin-top:95px}.world-cards,.learning-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.world-cards article{padding:32px;background:var(--pale);border:1px solid var(--line);border-radius:16px}.world-cards span{display:block;font-size:40px;font-weight:800;color:#b8c7da;margin-bottom:28px}.world-cards small,.learning-cards small{color:#607a9b;font-weight:700}.world-cards h3,.learning-cards h3{font-size:25px;line-height:1.5;letter-spacing:-.04em;margin:15px 0}.world-cards p,.learning-cards p{font-size:14px;color:var(--slate);line-height:1.8}.world-end{font-size:17px;line-height:1.8;text-align:center;margin-top:30px;color:var(--slate)}.world-end strong{color:var(--navy)}.learning-cards article{padding:27px;background:white;border-top:3px solid #7b91af;border-radius:0 0 12px 12px}.learning-end{margin:25px 0 42px;color:var(--slate);line-height:1.9}.method-story{display:grid;grid-template-columns:1fr 1.2fr;gap:45px;padding:42px;margin-top:35px;background:white;border:1px solid var(--line);border-radius:18px}.method-story h3{font-size:32px;line-height:1.5;letter-spacing:-.04em;margin-top:17px}.method-story p{font-size:15px;color:var(--slate);line-height:1.9}.method-story strong{display:block;font-size:27px;line-height:1.5;color:var(--navy);margin:22px 0}
+@media(max-width:760px){.brand-lead,.core-strip,.world-cards,.learning-cards,.method-story{grid-template-columns:1fr;gap:25px}.core-strip,.method-story{padding:27px}.brand-lead p{font-size:15px}.world-heading{margin-top:65px}}
+/* Show navigation when scrolling upward. */
+.site-header{transition:transform .22s ease;will-change:transform}
+.site-header.header-hidden{transform:translateY(-100%);pointer-events:none}
+@media(prefers-reduced-motion:reduce){.site-header{transition:none}}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="#top" aria-label="노른자국어 상단으로"><span class="brand-icon">ㄴㅈ</span>노른자국어</a>
+    <nav class="nav-links" id="navLinks" aria-label="메인 메뉴">
+      <a href="#about">서비스 소개</a>
+      <a href="#curriculum">커리큘럼</a>
+      <a href="#preview">학습 미리보기</a>
+      <a href="#pricing">이용권 안내</a>
+      
+    </nav>
+    <a class="btn btn-primary header-btn" href="#install">앱 설치하기 <span class="arr">↗</span></a>
+    <button class="menu-toggle" type="button" id="menuToggle" aria-expanded="false" aria-label="메뉴 열기">☰</button>
+  </div>
+</header>
+<main id="top">
+  <!-- SECTION 01 HERO -->
+  <section class="hero" aria-labelledby="heroTitle">
+    <div class="container hero-grid">
+      <div>
+        <span class="hero-tag">독해의 시작, 노른자국어</span>
+        <h1 id="heroTitle">읽고 이해하는 힘,<br><em>지금부터</em><br>차근차근.</h1>
+        <p>어휘를 이해하고, 문장을 읽고, 글의 의미를 파악하는 힘.<br>우리 아이의 읽기 학습, 노른자국어와 시작하세요.</p>
+        <div class="hero-actions">
+          <a href="#install" class="btn btn-primary">무료체험 시작하기 <span class="arr">→</span></a>
+          <a href="#curriculum" class="btn btn-outline">학습 방법 알아보기</a>
+        </div>
+        <div class="hero-note">* 무료체험은 앱 설치 후 이용하는 구성으로 제안합니다.</div>
+      </div>
+      <div class="asset-box hero-art" role="img" aria-label="대표 브랜드 이미지 삽입 예정">
+        <span class="art-top">HERO VISUAL / DESIGN TEAM</span>
+        <div class="art-icon">▧</div>
+        <span class="asset-label">브랜드 대표 이미지 영역</span>
+        <p>노른이 캐릭터 · 아이 학습 이미지 등<br>디자인팀에서 최종 비주얼 제작 및 교체</p>
+        <span class="hero-badge">IMAGE PLACEHOLDER</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 02 PROBLEM + SOURCES -->
+  <section class="section news-section" id="why" aria-labelledby="whyHeading">
+    <div class="container">
+      <div class="news-intro">
+        <div class="section-heading">
+          <div class="eyebrow">01 / WHY READING MATTERS</div>
+          <h2 id="whyHeading">어른도 쉽지 않은 읽기,<br>우리 아이들은 어떻게 준비해야 할까요?</h2>
+          <p>읽고 이해하는 능력의 중요성은 다양한 조사와 교육 현장의 보도에서 확인됩니다.</p>
+        </div>
+        <p class="minor">정보를 접하는 것을 넘어<br>의미를 이해하고 생각하는 힘이 필요합니다.</p>
+      </div>
+      <div class="news-stats">
+        <div class="stat">
+          <div class="over">한국 성인 평균 언어능력</div>
+          <div class="metric">249<span>점</span></div>
+          <div class="sub">OECD 평균 <strong>260점</strong>보다 낮게 나타났습니다.</div>
+          <div class="stat-source">출처: OECD 국제성인역량조사(PIAAC), 2024년 발표 · 연합뉴스</div>
+        </div>
+        <div class="stat">
+          <div class="over">학생 문해력 저하를 체감한 교사 비율</div>
+          <div class="metric">91.8<span>%</span></div>
+          <div class="sub">설문에 응답한 교사가 학생 문해력이 과거보다 떨어졌다고 답했습니다.</div>
+          <div class="stat-source">출처: 한국교총 교사 5,800여 명 설문 관련 보도 · SBS, 2024년</div>
+        </div>
+      </div>
+      <p class="news-notice">※ 서로 다른 대상·방식의 조사 결과이며, 위 수치로 모든 아동의 문해력 수준을 단정할 수는 없습니다.</p>
+
+      <div class="news-header"><h3>언론이 주목한 읽기 교육의 중요성</h3><small>기사별 요약은 홈페이지용 초안</small></div>
+      <div class="article-grid">
+        <a href="https://imnews.imbc.com/replay/2026/nwdesk/article/6808523_37005.html" target="_blank" rel="noopener noreferrer" class="article">
+          <div class="article-media"><span class="name">MBC NEWS</span><span class="date">2026.03.18</span></div>
+          <div class="article-body">
+            <h4>짧은 영상에 익숙해진 학생들, 긴 글 읽기의 어려움</h4>
+            <p>교과서 지문을 읽는 과정과 시선 추적 검사 사례를 다룬 보도입니다.</p>
+            <span class="article-link">기사 원문 보기 ↗</span>
+          </div>
+        </a>
+        <a href="https://news.sbs.co.kr/news/endPage.do?news_id=N1007827426" target="_blank" rel="noopener noreferrer" class="article">
+          <div class="article-media"><span class="name">SBS NEWS</span><span class="date">2024.10.09</span></div>
+          <div class="article-body">
+            <h4>교실에서 나타나는 어휘와 문맥 이해의 어려움</h4>
+            <p>학생의 문해력 변화를 바라보는 교사 설문과 학교 현장 사례입니다.</p>
+            <span class="article-link">기사 원문 보기 ↗</span>
+          </div>
+        </a>
+        <a href="https://www.yna.co.kr/view/AKR20241210081500530" target="_blank" rel="noopener noreferrer" class="article">
+          <div class="article-media"><span class="name">연합뉴스</span><span class="date">2024.12.10</span></div>
+          <div class="article-body">
+            <h4>한국 성인의 언어능력, OECD 평균보다 낮게 조사</h4>
+            <p>언어·수리·문제해결 역량에 관한 OECD 국제 조사 결과를 소개합니다.</p>
+            <span class="article-link">기사 원문 보기 ↗</span>
+          </div>
+        </a>
+        <a href="https://news.sbs.co.kr/news/endPage.do?news_id=N1008103337" target="_blank" rel="noopener noreferrer" class="article extra">
+          <div class="article-media"><span class="name">SBS NEWS</span><span class="date">2025.05.16 13:40</span></div>
+          <div class="article-body">
+            <h4>정보를 비판적으로 읽고 판단하는 능력의 중요성</h4>
+            <p>문해력과 정보 판단을 다룬 전문가 대담.</p>
+            <span class="article-link">기사 원문 보기 ↗</span>
+          </div>
+        </a>
+        <a href="https://edu.chosun.com/m/edu_article.html?contid=2025111380258" target="_blank" rel="noopener noreferrer" class="article extra">
+          <div class="article-media"><span class="name">조선에듀</span><span class="date">2025.11.13 20:43</span></div>
+          <div class="article-body">
+            <h4>2026학년도 수능, 국·수·영 모두 지난해 수능보다 어려워… 확실한 변별력 확보 (총평)</h4>
+            <p>전년보다 어려워진 국어·수학·영어의 출제 경향과 상위권 변별력, 시간 관리 부담을 짚습니다.</p>
+            <span class="article-link">기사 원문 보기 ↗</span>
+          </div>
+        </a>
+        <a href="https://www.joongang.co.kr/article/25381935" target="_blank" rel="noopener noreferrer" class="article extra">
+          <div class="article-media"><span class="name">중앙일보</span><span class="date">2025.11.13 22:14</span></div>
+          <div class="article-body">
+            <h4>‘킬러 문항’은 아니었지만…“수능 국·수·영 모두 까다로운 문제”</h4>
+            <p>킬러 문항 배제에도 국어·수학·영어 모두 까다로운 문제가 출제됐다는 평가를 전합니다.</p>
+            <span class="article-link">기사 원문 보기 ↗</span>
+          </div>
+        </a>
+      </div>
+      <div class="news-bridge">
+        <div>
+          <strong>읽고 이해하는 힘,<br>기초부터 차근차근 준비해야 합니다.</strong>
+          <p>단어의 뜻을 알고, 문장의 흐름을 파악하고, 글의 의미를 생각하는 습관.</p>
+        </div>
+        <a class="btn btn-white" href="#about">노른자국어 알아보기 <span class="arr">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 03 ABOUT -->
+  <section class="section" id="about" aria-labelledby="aboutHeading"><div class="container">
+  <div class="brand-lead"><div><div class="eyebrow">02 / ABOUT NOREUNJA</div><h2 id="aboutHeading">노른자만 골라,<br>독해 실력을 굳히다.</h2></div><div><p>아이의 독해 실력은 한 과목을 많이 푼다고 자라지 않습니다.</p><p>이야기를 읽고, 뜻을 이해하고, 생각하며 읽는 힘이 쌓일 때 비로소 모든 공부의 바탕이 됩니다.</p><strong>불필요한 분량은 덜어내고,<br>독해에 꼭 필요한 핵심만 남겼습니다.</strong></div></div>
+  <div class="core-strip"><div><small>01 / READ</small><h3>이야기를 읽고</h3><p>다양한 글을 만나는 읽기 경험</p></div><div><small>02 / UNDERSTAND</small><h3>뜻을 이해하고</h3><p>어휘와 문맥을 연결하는 이해</p></div><div><small>03 / THINK</small><h3>생각하며 읽는 힘</h3><p>모든 공부의 바탕이 되는 독해력</p></div></div>
+  <div class="world-heading section-heading"><div class="eyebrow">READ BEYOND KOREAN</div><h2>모든 교과의 바탕이 되는<br>읽기 힘</h2><p>이솝우화와 전래동화, 사자성어부터 한국 문화와 한국사까지.<br>다양한 영역의 글을 읽으며 배움의 바탕을 넓힙니다.</p></div>
+  <div class="world-cards"><article><span>01</span><small>이솝우화 · 전래동화</small><h3>이야기 속 의미를<br>이해하는 힘</h3><p>문학을 읽고 이해하는 힘을 기릅니다.</p></article><article><span>02</span><small>사자성어 · 인문</small><h3>읽을수록 넓어지는<br>배경지식</h3><p>인문학 배경지식의 기반을 다집니다.</p></article><article><span>03</span><small>한국 문화 · 한국사</small><h3>문화와 역사의<br>맥락을 연결하는 힘</h3><p>역사 및 문화를 파악하고 맥락을 연결합니다.</p></article></div>
+  <p class="world-end">국어를 넘어, <strong>모든 교과 학습의 바탕이 되는 독해력</strong>을 기릅니다.</p>
+  </div></section>
+  <!-- SECTION 04 CURRICULUM -->
+  <section class="section curriculum" id="curriculum" aria-labelledby="curriculumHeading">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">03 / CURRICULUM</div>
+        <h2 id="curriculumHeading">수준에 맞게,<br>단계적으로.</h2>
+        <p>아이의 독해 수준은 급수와 다를 수 있습니다.<br>초등 전 과정을 1~6급 체계로 구성해, 지금 필요한 단계에 집중합니다.</p>
+      </div>
+      <div class="learning-cards"><article><small>기초 이해</small><h3>어휘와 문장 구조</h3><p>기호 어휘와 문장 구조를 익히는 단계</p></article><article><small>내용 파악</small><h3>이야기와 정보 읽기</h3><p>이야기와 정보를 읽는 단계</p></article><article><small>생각 확장</small><h3>생각하며 읽기</h3><p>생각하며 읽고, 정리하고 표현하는 단계</p></article></div><p class="learning-end">읽고 이해하는 것을 넘어 정리하고 표현하는 단계까지.<br><strong>지금 아이에게 맞는 독해 경험을 제공합니다.</strong></p><div class="flow-steps">
+        <div class="flow-step"><span class="step-index">STEP 01</span><h3>문해력 진단</h3><p>아이의 현재 읽기 수준을 확인합니다.</p></div>
+        <div class="flow-step"><span class="step-index">STEP 02</span><h3>급수 배정</h3><p>진단 결과에 따라 학습 급수를 설정합니다.</p></div>
+        <div class="flow-step"><span class="step-index">STEP 03</span><h3>단계별 학습</h3><p>급수 · 단락 · 매듭 구조로 학습합니다.</p></div>
+        <div class="flow-step"><span class="step-index">STEP 04</span><h3>학습 결과</h3><p>평가 결과와 학습 내용을 확인합니다.</p></div>
+      </div>
+      <div class="grade-board">
+        <div class="board-top"><h3>1~6급 커리큘럼</h3><small>급수별 상세 학습 목표는 콘텐츠팀 자료 반영 예정</small></div>
+        <div class="grade-tabs" role="tablist" aria-label="급수 선택">
+          <button type="button" class="grade-tab active" data-grade="1" role="tab" aria-selected="true">1급</button>
+          <button type="button" class="grade-tab" data-grade="2" role="tab" aria-selected="false">2급</button>
+          <button type="button" class="grade-tab" data-grade="3" role="tab" aria-selected="false">3급</button>
+          <button type="button" class="grade-tab" data-grade="4" role="tab" aria-selected="false">4급</button>
+          <button type="button" class="grade-tab" data-grade="5" role="tab" aria-selected="false">5급</button>
+          <button type="button" class="grade-tab" data-grade="6" role="tab" aria-selected="false">6급</button>
+        </div>
+        <div class="grade-content">
+          <div><h4 id="gradeTitle">1급 학습 안내</h4><p id="gradeText">선택한 급수의 교육 목표 · 대표 지문 · 학습 내용을 이 영역에 표시합니다.</p></div>
+          <span class="pill">상세 커리큘럼 추후 입력</span>
+        </div>
+      </div>
+<div class="method-story"><div><div class="eyebrow">SMALL STEPS, EVERY DAY</div><h3>분량보다 중요한 건,<br>꾸준히 읽는 경험.</h3></div><div><p>문제 수를 늘리지 않습니다. 지문을 쌓아두지 않습니다.<br>대신 짧고 반복적인 구조로 독해의 중심을 꾸준히 다집니다.</p><strong>그래서 부담이 적고,<br>그래서 오래 갑니다.</strong><p>독해의 기초를 단단히 만드는 선택, 노른자국어입니다.</p></div></div>    </div>
+  </section>
+
+  <!-- SECTION 05 PREVIEW -->
+  <section class="section" id="preview" aria-labelledby="previewHeading">
+    <div class="container preview-layout">
+      <div class="preview-info">
+        <div class="section-heading">
+          <div class="eyebrow">04 / APP PREVIEW</div>
+          <h2 id="previewHeading">실제 학습은<br>이렇게 진행됩니다.</h2>
+          <p>지문을 읽고 문제를 풀고 해설을 확인하는 과정을 미리 살펴보세요.</p>
+        </div>
+        <div class="preview-tabs" role="tablist" aria-label="학습 미리보기 단계">
+          <button type="button" class="preview-tab active" data-preview="read" role="tab" aria-selected="true">지문 읽기</button>
+          <button type="button" class="preview-tab" data-preview="quiz" role="tab" aria-selected="false">문제 풀기</button>
+          <button type="button" class="preview-tab" data-preview="answer" role="tab" aria-selected="false">해설 확인</button>
+        </div>
+        <div id="previewDesc" class="tab-desc">학습 내용을 차분하게 읽고, 문장에서 중요한 정보를 찾아보는 단계입니다.</div>
+        <p class="hint">※ 오른쪽 앱 화면은 레이아웃 검토를 위한 임시 이미지형 목업입니다. 실제 앱 캡처로 교체할 예정입니다.</p>
+      </div>
+      <div class="preview-stage">
+        <div class="device" aria-label="임시 앱 화면 미리보기">
+          <div class="device-app">
+            <div class="fake-app-bar">노른자국어 <span>3급 · 2단락</span></div>
+            <div class="fake-progress"><i></i></div>
+            <div class="device-view active" data-screen="read">
+              <div class="fake-tag">READING / STEP 01</div><div class="fake-title">숲의 작은 변화</div>
+              <div class="fake-passage">계절이 바뀌면 숲의 모습도 달라집니다.<br><br>봄에는 나뭇가지에 연둣빛 잎이 돋고, 여름에는 나무들이 짙은 그늘을 만듭니다.<br><br>우리는 숲의 변화를 살피며 계절마다 달라지는 자연의 모습을 발견할 수 있습니다.</div>
+              <div class="fake-action">다음으로</div>
+            </div>
+            <div class="device-view" data-screen="quiz">
+              <div class="fake-tag">QUIZ / STEP 02</div><div class="fake-title">내용 확인하기</div>
+              <div class="fake-question">글의 내용과 일치하는 것을 골라 보세요.</div>
+              <div class="fake-option">① 숲은 사계절 내내 같은 모습을 유지합니다.</div>
+              <div class="fake-option selected">② 계절에 따라 숲의 모습이 달라집니다.</div>
+              <div class="fake-option">③ 여름에는 나뭇가지에 새잎이 돋습니다.</div>
+              <div class="fake-action">제출하기</div>
+            </div>
+            <div class="device-view" data-screen="answer">
+              <div class="fake-tag">RESULT / STEP 03</div><div class="fake-title">해설 확인하기</div>
+              <div class="fake-correct">✓ 정답 ② 계절에 따라 숲의 모습이 달라집니다.</div>
+              <div class="fake-explain"><strong>해설</strong><br>본문에서는 봄과 여름에 숲이 어떻게 달라지는지 설명하고 있습니다.<br><br>글에서 제시한 내용을 근거로 정답을 찾아보세요.</div>
+              <div class="fake-action">학습 완료</div>
+            </div>
+          </div>
+          <span class="fake-sample-label">SAMPLE UI · 실제 콘텐츠 아님</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 06 REWARDS -->
+  <section class="section reward" id="reward" aria-labelledby="rewardHeading">
+    <div class="container reward-layout">
+      <div class="asset-box reward-art" role="img" aria-label="달걀 보상 일러스트 삽입 예정">
+        <span class="art-top">REWARD VISUAL / DESIGN TEAM</span>
+        <div class="egg-icon">EGG</div>
+        <span class="asset-label">보상 캐릭터 및 달걀 이미지 영역</span>
+      </div>
+      <div class="reward-copy">
+        <div class="section-heading">
+          <div class="eyebrow">05 / REWARD</div>
+          <h2 id="rewardHeading">매일 쌓이는 학습의 성취,<br>달걀로 확인해요.</h2>
+          <p>학습을 완료하며 달걀을 모으고, 누적된 기록을 통해 성취감을 경험할 수 있도록 합니다.</p>
+        </div>
+        <div class="reward-points"><span class="reward-point">학습 완료</span><span class="reward-point">달걀 적립</span><span class="reward-point">이벤트 참여</span></div>
+        <p class="reward-caution">※ 실물 달걀 교환 및 적립·배송 조건은 최종 운영 정책 확인 후 정확한 문구로 반영합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 07 PRICING -->
+  <section class="section pricing" id="pricing" aria-labelledby="pricingHeading">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">06 / PRICING</div>
+        <h2 id="pricingHeading">학습 계획에 맞춰<br>이용권을 선택하세요.</h2>
+        <p>월간 또는 연간 이용권으로 노른자국어 학습을 시작할 수 있습니다.</p>
+      </div>
+      <div class="price-grid">
+        <div class="price-card">
+          <div class="price-head"><h3>월간 이용권</h3><span>월 단위</span></div>
+          <div class="price">9,900원 <small>/ 1개월</small></div>
+          <p class="price-explain">한 달 단위로 학습을 시작하고 싶은 가정을 위한 이용권입니다.</p>
+          <ul class="price-features"><li>1개월 이용</li><li>단계별 학습 서비스 이용</li><li>학생별 학습 관리</li></ul>
+          <a class="btn btn-outline" href="#install">앱에서 이용권 알아보기 <span class="arr">→</span></a>
+        </div>
+        <div class="price-card featured">
+          <div class="price-head"><h3>연간 이용권</h3><span>12개월</span></div>
+          <div class="price">109,000원 <small>/ 12개월</small></div>
+          <p class="price-explain">꾸준한 학습을 장기적으로 계획하는 가정을 위한 이용권입니다.</p>
+          <ul class="price-features"><li>12개월 이용</li><li>단계별 학습 서비스 이용</li><li>학생별 학습 관리</li></ul>
+          <a class="btn btn-primary" href="#install">앱에서 이용권 알아보기 <span class="arr">→</span></a>
+        </div>
+      </div>
+      <p class="price-caution">※ 노출 금액은 전달받은 기존 정책정의서 참고값입니다. 실제 출시 가격·혜택·결제 경로는 운영 정책 확정 후 검수해야 합니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 08 INSTALL -->
+  <section class="install" id="install" aria-labelledby="installHeading">
+    <div class="container install-grid">
+      <div>
+        <div class="eyebrow" style="color:#9EB5D2">07 / START LEARNING</div>
+        <h2 id="installHeading">우리 아이의 독해 학습,<br>지금 시작해 보세요.</h2>
+        <p>노른자국어 앱에서 무료체험을 살펴보고<br>아이에게 맞는 학습을 시작할 수 있습니다.</p>
+        <div class="install-actions">
+          <button type="button" class="btn btn-ghost-white" data-soon="Google Play 주소 확정 후 연결됩니다.">Google Play <span class="arr">↗</span></button>
+        </div>
+        
+      </div>
+      <div class="qr-display">
+        <div class="qr-placeholder">QR CODE<br>PLACEHOLDER</div>
+        <strong>앱 설치 QR코드</strong>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-in">
+    <div>
+      <strong>노른자국어</strong>
+      <p>© 노른자국어. All rights reserved.</p>
+    </div>
+
+  </div>
+</footer>
+
+<button type="button" class="top-btn" id="topBtn" aria-label="맨 위로">↑</button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(() => {
+  const nav = document.getElementById("navLinks");
+  const toggle = document.getElementById("menuToggle");
+  toggle.addEventListener("click", () => {
+    const opened = nav.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", opened ? "true" : "false");
+  });
+  nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+    nav.classList.remove("open"); toggle.setAttribute("aria-expanded", "false");
+  }));
+
+  document.querySelectorAll("[data-grade]").forEach(btn => btn.addEventListener("click", () => {
+    document.querySelectorAll("[data-grade]").forEach(b=>{
+      const active = b === btn;
+      b.classList.toggle("active",active);
+      b.setAttribute("aria-selected", String(active));
+    });
+    document.getElementById("gradeTitle").textContent = btn.dataset.grade + "급 학습 안내";
+  }));
+
+  const messages = {
+    read:"학습 내용을 차분하게 읽고, 문장에서 중요한 정보를 찾아보는 단계입니다.",
+    quiz:"읽은 내용을 바탕으로 질문에 답하며 핵심 내용을 이해했는지 확인하는 단계입니다.",
+    answer:"답안을 제출한 뒤 정답과 해설을 확인하고 글의 내용을 다시 정리하는 단계입니다."
+  };
+  document.querySelectorAll("[data-preview]").forEach(btn => btn.addEventListener("click", () => {
+    document.querySelectorAll("[data-preview]").forEach(b=>{
+      const active = b === btn;
+      b.classList.toggle("active",active);
+      b.setAttribute("aria-selected", String(active));
+    });
+    document.querySelectorAll("[data-screen]").forEach(view=>view.classList.toggle("active",view.dataset.screen === btn.dataset.preview));
+    document.getElementById("previewDesc").textContent = messages[btn.dataset.preview];
+  }));
+
+  const siteHeader = document.querySelector('.site-header');
+  let previousScrollY = Math.max(0, window.scrollY);
+  let directionTravel = 0;
+  let previousDirection = 0;
+  window.addEventListener('scroll', () => {
+    const currentY = Math.max(0, Math.min(window.scrollY, document.documentElement.scrollHeight - window.innerHeight));
+    const delta = currentY - previousScrollY;
+    previousScrollY = currentY;
+    if (currentY <= siteHeader.offsetHeight || nav.classList.contains('open')) {
+      siteHeader.classList.remove('header-hidden');
+      directionTravel = 0;
+      previousDirection = 0;
+      return;
+    }
+    if (delta === 0) return;
+    const direction = delta > 0 ? 1 : -1;
+    directionTravel = direction === previousDirection ? directionTravel + Math.abs(delta) : Math.abs(delta);
+    previousDirection = direction;
+    if (directionTravel >= 8) siteHeader.classList.toggle('header-hidden', direction > 0);
+  }, {passive:true});
+  siteHeader.addEventListener('focusin', () => siteHeader.classList.remove('header-hidden'));
+  const toast = document.getElementById("toast");
+  let toastHandle;
+  function showToast(message) {
+    toast.textContent=message; toast.classList.add("show");
+    clearTimeout(toastHandle);
+    toastHandle=setTimeout(()=>toast.classList.remove("show"),2800);
+  }
+  document.querySelectorAll("[data-soon]").forEach(item=>item.addEventListener("click",event=>{
+    event.preventDefault();showToast(item.dataset.soon);
+  }));
+  const topBtn=document.getElementById("topBtn");
+  topBtn.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
+  window.addEventListener("scroll",()=>topBtn.classList.toggle("show",window.scrollY>420),{passive:true});
+})();
+</script>
+</body>
+</html>
